@@ -55,6 +55,16 @@ The Vite dev server proxies `/api` to the Express server.
 2. Allow your IP in Network Access.
 3. Copy the connection string into `MONGODB_URI` in `.env`.
 
+## Deploy API on Render
+
+| Setting | Value |
+|---------|--------|
+| Root Directory | `server` |
+| Build Command | `npm install && npm run build` |
+| Start Command | `npm start` |
+
+Set environment variables in Render: `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL`, `NODE_ENV=production`.
+
 ## Repository
 
 https://github.com/jjxd3v/brew_haven

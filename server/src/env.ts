@@ -14,18 +14,23 @@ const envPaths = [
 
 let loadedFrom: string | null = null;
 
-for (const envPath of envPaths) {
-  if (!fs.existsSync(envPath)) continue;
-  const result = dotenv.config({ path: envPath, override: true });
-  if (!result.error && process.env.MONGODB_URI) {
-    loadedFrom = envPath;
-    break;
+// Render/Vercel inject env vars directly; only load .env files when needed (e.g. local dev)
+if (!process.env.MONGODB_URI) {
+  for (const envPath of envPaths) {
+    if (!fs.existsSync(envPath)) continue;
+    const result = dotenv.config({ path: envPath, override: true });
+    if (!result.error && process.env.MONGODB_URI) {
+      loadedFrom = envPath;
+      break;
+    }
   }
+} else {
+  loadedFrom = 'process environment';
 }
 
 if (!process.env.MONGODB_URI) {
   console.error(
-    '[env] MONGODB_URI is missing. Create BrewHaven/.env or server/.env with your Atlas connection string.\nTried:\n' +
+    '[env] MONGODB_URI is missing. Set it in Render environment variables or in BrewHaven/.env\nTried:\n' +
       envPaths.map((p) => `  - ${p}`).join('\n')
   );
   process.exit(1);
