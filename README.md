@@ -54,3 +54,7 @@ The Vite dev server proxies `/api` to the Express server.
 1. Create a free cluster and database user.
 2. Allow your IP in Network Access.
 3. Copy the connection string into `MONGODB_URI` in `.env`.
+
+## Repository
+
+https://github.com/jjxd3v/brew_haven
