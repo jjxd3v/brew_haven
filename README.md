@@ -60,7 +60,7 @@ The Vite dev server proxies `/api` to the Express server.
 | Setting | Value |
 |---------|--------|
 | Root Directory | `server` |
-| Build Command | `npm install && npm run build` |
+| Build Command | `npm install && npm run build` (types are in `dependencies` so Render can compile) |
 | Start Command | `npm start` |
 
 Set environment variables in Render: `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL`, `NODE_ENV=production`.
