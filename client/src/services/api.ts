@@ -1,6 +1,14 @@
 import type { User, Order, MenuItem } from '../types';
 
-const baseUrl = import.meta.env.VITE_API_URL || '/api';
+function resolveApiBaseUrl(): string {
+  const raw = import.meta.env.VITE_API_URL || '/api';
+  if (raw === '/api' || raw.endsWith('/api')) {
+    return raw.replace(/\/$/, '') || '/api';
+  }
+  return `${raw.replace(/\/$/, '')}/api`;
+}
+
+const baseUrl = resolveApiBaseUrl();
 
 async function apiRequest<T>(
   path: string,

@@ -65,6 +65,23 @@ The Vite dev server proxies `/api` to the Express server.
 
 Set environment variables in Render: `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL`, `NODE_ENV=production`.
 
+Example for Vercel + Render:
+
+```env
+# Render
+CLIENT_URL=https://brew-haven-ochre.vercel.app
+NODE_ENV=production
+
+# Vercel
+VITE_API_URL=https://brewhaven-api.onrender.com/api
+```
+
+`CLIENT_URL` must match your Vercel URL exactly. You can allow local dev too:
+
+```env
+CLIENT_URL=https://brew-haven-ochre.vercel.app,http://localhost:5173
+```
+
 ## Repository
 
 https://github.com/jjxd3v/brew_haven
